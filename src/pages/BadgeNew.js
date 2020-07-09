@@ -26,7 +26,7 @@ export const BadgeNew = (props) => {
             <div className="row">
                 <div className="col">
                      {/* Inserto los props */}
-                    <Badge firstName="Nacho" lastName="Huala" jobTitle="Estudiante Ing. Industrial" twitter="nachohuala"/>
+                    <Badge firstName={user.form.firstName} lastName={user.form.lastName} jobTitle={user.form.jobTitle} twitter={user.form.twitter} email={user.form.email}/>
                 </div>
                 <div className="col">
                     {/* Inserto los props */}

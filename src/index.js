@@ -6,10 +6,11 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './global.css'
 // Importo los componentes
 import {BadgeNew } from './pages/BadgeNew';
+import {BadgesDisplay } from './pages/BadgesDisplay';
 
 ReactDOM.render(
   <React.StrictMode>
-  <BadgeNew/>
+  <BadgesDisplay/>
   </React.StrictMode>,
   document.getElementById('root')
 );

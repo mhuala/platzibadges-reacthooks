@@ -37,6 +37,24 @@ export const BadgeForm = (props) => {
                 type="email" 
                 name="email"/>
             </div>
+            <div className="form-group">
+                <label htmlFor="">  Job Title </label>
+                <input 
+                value = {props.formValues.jobTitle}
+                onChange={props.onChange}
+                className="form-control" 
+                type="text" 
+                name="jobTitle"/>
+            </div>
+            <div className="form-group">
+                <label htmlFor="">  Twitter </label>
+                <input 
+                value = {props.formValues.twitter}
+                onChange={props.onChange}
+                className="form-control" 
+                type="text" 
+                name="twitter"/>
+            </div>
             {/* El boton tiene por defecto el tipo "submit", que al presionarlo refresca la pagina 
             de nuevo. Para evitarlo debemos cambiar el tipo a "button" */}
             <button type="button" className="btn btn-primary" onClick={handleClick}> Save </button>
