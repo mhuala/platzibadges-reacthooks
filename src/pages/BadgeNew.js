@@ -2,12 +2,17 @@ import React, {useState} from 'react';
 import '../styles/BadgeNew.css'
 
 import header from '../images/badge-header.svg'
-import { Navbar } from '../components/Navbar';
 import { Badge } from '../components/Badge';
 import { BadgeForm } from '../components/BadgeForm';
 
 export const BadgeNew = (props) => {
-    const [ user , setUser] = useState({form:{}});
+    const [ user , setUser] = useState({form:{
+        firstName:'',
+        lastName:'',
+        jobTitle:'',
+        twitter:'',
+        email:'',
+    }});
 
     const handleChange = e => {
         const nextForm = user.form
@@ -17,8 +22,7 @@ export const BadgeNew = (props) => {
     )}
 
     return(
-    <div>
-        <Navbar/> 
+    <React.Fragment>
         <div className="BadgeNew__hero">
             <img className="img-fluid" src={header} alt=""/>
         </div>
@@ -34,7 +38,7 @@ export const BadgeNew = (props) => {
                 </div>       
             </div> 
         </div>
-    </div>
+    </React.Fragment>
     )
 }
 export default BadgeNew;

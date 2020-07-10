@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect, useRef} from 'react';
+import {Link} from 'react-router-dom';
+// Importamos Estilos y la imagen del header del badge
 import '../styles/BadgesDisplay.css'
 import confLogo from '../images/badge-header.svg'
-import {Navbar} from '../components/Navbar';
+// Impotartamos componentes
 import {BadgesList} from '../components/BadgesList';
 
+
+// Función que nos permitirá acceder al estado previo
+function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
 export const BadgesDisplay = props => {
-    const [state, setstate] = useState({
-        data:[{
+    const [state, setState] = useState({
+        data:[]
+    });
+
+    const prevState = usePrevious({state, setState});
+    
+    useEffect(() => {
+
+        setTimeout(() => setState(
+        {data:[{
             id:"2de30c42-9deb-40fc-a41f-05e62b5939a7",
             firstName:"Freda",
             lastName:"Grady",
@@ -34,11 +53,21 @@ export const BadgesDisplay = props => {
             twitter:"DaphneyTorphy96105",
             avatarUrl:"https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon"
           }]}
-    );
+        ),3000)
 
+    },[])
+
+    
+    if (state!==[]){
+        console.log(state.data)
+    }
+    
+    if (prevState!=null){
+        console.log(prevState.state.data)
+    }
+    
     return(
-        <div>
-             <Navbar/>
+        <React.Fragment>
             <div className="Badges">
                 <div className="Badges__hero">
                     <div className="Badges__container">
@@ -47,11 +76,13 @@ export const BadgesDisplay = props => {
                 </div>
             </div>
 
-            <div className="Badge__container">
+            <div className="Badges__container">
                 <div className="Badges__buttons">
-                    <a href="/badges/new" className="btn btn-primary">
+                    {/* En lugar de la etiqueta a y su parametro href */}
+                    {/* Usamos Link y to , para que funcione con React-router*/}
+                    <Link to="/badges/new" className="btn btn-primary">
                         New Badge
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="Badges__list">
@@ -59,13 +90,8 @@ export const BadgesDisplay = props => {
                       <BadgesList badges={state.data}/>
                     </div>
                 </div>
-
-
-
             </div>
-
-
-        </div>
-
+        </React.Fragment>
+        
     )
 }

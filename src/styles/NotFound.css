@@ -1,0 +1,7 @@
+.NotFound{
+
+    width: 100vw;
+    height: 90vh;
+    background: url('../images/404.jpg') no-repeat;
+    background-size: cover;
+}
